@@ -13,16 +13,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import {reactive, onMounted} from 'vue'
 import TodoListCopy from '../src/components/TodoListCopy.vue';
 import InputTodo from '../src/components/InputTodo.vue';
 
-
-export default{
-    name: "App",
-    components: { TodoListCopy, InputTodo },
-    setup() {
         const ts = new Date().getTime();
         const state = reactive({ todoList: [] });
         onMounted(() => {
@@ -45,10 +40,7 @@ export default{
             let index = state.todoList.findIndex((item) => id === item.id);
             state.todoList[index].completed = !state.todoList[index].completed;
         };
-        return { state, addTodo, deleteTodo, toggleCompleted };
-    },
-
-}
+    
 </script>
 
 <style scoped></style>
